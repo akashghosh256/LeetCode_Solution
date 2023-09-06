@@ -1,22 +1,22 @@
-// class Solution {
-//     public int strStr(String haystack, String needle) {
-//         int n = needle .length();
-//         int m = haystack.length();
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int n = needle .length();
+        int m = haystack.length();
     
 
-//         int i=0;
-//         while(i<m){
-//         // if a character matches the any character of haystack then we use 
-//         // substring to pick up the string and match with needle else we move ahead
-//             if(needle.charAt(0) == haystack.charAt(i) && (i+n <=m)){
-//                 if(needle.equals(haystack.substring(i,i+n))) return i;
-//             }
-//               i++;
-//         }
-//         return -1;
+        int i=0;
+        while(i<m){
+        // if a character matches the any character of haystack then we use 
+        // substring to pick up the string and match with needle else we move ahead
+            if(needle.charAt(0) == haystack.charAt(i) && (i+n <=m)){
+                if(needle.equals(haystack.substring(i,i+n))) return i;
+            }
+              i++;
+        }
+        return -1;
         
-//     }
-// }
+    }
+}
 
 // // time complexity is O(m * n), where m is the length of the haystack string, and n is the length of the needle string.
 // //  space complexity is O(n) for the substring created inside the loop.
@@ -105,59 +105,59 @@
 
 
 // Z Alogorithm-------------------------------------------------------------------------
+// Its better for bigger strings matching, here it is shown how it is done
 
 
-
-public class Solution {
-    public int strStr(String haystack, String needle) {
-        if (needle.isEmpty()) {
-            return 0; // Empty needle is always a match.
-        }
+// public class Solution {
+//     public int strStr(String haystack, String needle) {
+//         if (needle.isEmpty()) {
+//             return 0; // Empty needle is always a match.
+//         }
         
-        String concatenated = needle + "$" + haystack;
-        int[] zArray = calculateZArray(concatenated);
+//         String concatenated = needle + "$" + haystack;
+//         int[] zArray = calculateZArray(concatenated);
         
-        for (int i = 0; i < zArray.length; i++) {
-            if (zArray[i] == needle.length()) {
-                return i - needle.length() - 1; // Match found.
-            }
-        }
+//         for (int i = 0; i < zArray.length; i++) {
+//             if (zArray[i] == needle.length()) {
+//                 return i - needle.length() - 1; // Match found.
+//             }
+//         }
         
-        return -1; // No match found.
-    }
+//         return -1; // No match found.
+//     }
     
-    private int[] calculateZArray(String s) {
-        int n = s.length();
-        int[] zArray = new int[n];
-        int left = 0;
-        int right = 0;
+//     private int[] calculateZArray(String s) {
+//         int n = s.length();
+//         int[] zArray = new int[n];
+//         int left = 0;
+//         int right = 0;
         
-        for (int i = 1; i < n; i++) {
-            if (i > right) {
-                left = right = i;
-                while (right < n && s.charAt(right - left) == s.charAt(right)) {
-                    right++;
-                }
-                zArray[i] = right - left;
-                right--;
-            } else {
-                int k = i - left;
-                if (zArray[k] < right - i + 1) {
-                    zArray[i] = zArray[k];
-                } else {
-                    left = i;
-                    while (right < n && s.charAt(right - left) == s.charAt(right)) {
-                        right++;
-                    }
-                    zArray[i] = right - left;
-                    right--;
-                }
-            }
-        }
+//         for (int i = 1; i < n; i++) {
+//             if (i > right) {
+//                 left = right = i;
+//                 while (right < n && s.charAt(right - left) == s.charAt(right)) {
+//                     right++;
+//                 }
+//                 zArray[i] = right - left;
+//                 right--;
+//             } else {
+//                 int k = i - left;
+//                 if (zArray[k] < right - i + 1) {
+//                     zArray[i] = zArray[k];
+//                 } else {
+//                     left = i;
+//                     while (right < n && s.charAt(right - left) == s.charAt(right)) {
+//                         right++;
+//                     }
+//                     zArray[i] = right - left;
+//                     right--;
+//                 }
+//             }
+//         }
         
-        return zArray;
-    }
-}
+//         return zArray;
+//     }
+// }
 
 
 // Time Complexity (TC): The Z algorithm has a linear time complexity of O(m + n), where 'm' is the length of the pattern (needle), and 'n' is the length of the text (haystack). This means that the time it takes to search for all occurrences of the pattern within the text is directly proportional to the combined length of the pattern and the text.
