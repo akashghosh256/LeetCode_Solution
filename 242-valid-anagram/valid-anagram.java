@@ -3,6 +3,7 @@ class Solution {
 
 // The idea is simple. It creates a size 26 int arrays as buckets for each letter in alphabet. It increments the bucket value with String s and decrement with string t. So if they are anagrams, all buckets should remain with initial value which is zero or if values gets lower than 0 then also return false. So just checking that and return
 
+// Best
 
       int [] alphabet= new int[26];
         for (int i = 0; i < s.length(); i++) alphabet[s.charAt(i) - 'a']++;
@@ -19,6 +20,23 @@ class Solution {
 
     }
 }
+
+// Sorting can also be used , sort both the string and then match char one by one
+// But TC will increase
+// import java.util.Arrays;
+
+// class Solution {
+//     public boolean isAnagram(String s, String t) {
+//         char[] sChars = s.toCharArray();
+//         char[] tChars = t.toCharArray();
+        
+//         Arrays.sort(sChars);
+//         Arrays.sort(tChars);
+        
+//         return Arrays.equals(sChars, tChars);
+//     }
+// }
+
 
 
 // Using Hashtable -----------------------------------------------
