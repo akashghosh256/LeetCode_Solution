@@ -39,18 +39,16 @@ public class Solution {
             num.append("$");
             int count = 1;
 
-           // char currentChar = num.charAt(0);
+           
             for (int j = 0; j < num.length()-1; j++) {
                 if (num.charAt(j) == num.charAt(j+1)) {
                     count++;
                 } else {
                     temp.append(count).append(num.charAt(j));
-                  //  currentChar = num.charAt(j);
+                 
                     count = 1;
                 }
             }
-
-         //   temp.append(count).append(currentChar);
             num = temp;
         }
 
