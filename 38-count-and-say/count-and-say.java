@@ -29,27 +29,28 @@
 
 public class Solution {
     public String countAndSay(int n) {
-        if (n == 1)
-            return "1";
+        if (n == 1) return "1";
+        if( n == 2 ) return "11";
 
-        StringBuilder num = new StringBuilder("1");
+        StringBuilder num = new StringBuilder("11");
 
-        for (int i = 2; i <= n; i++) {
+        for (int i = 3; i <= n; i++) {
             StringBuilder temp = new StringBuilder();
+            num.append("$");
             int count = 1;
 
-            char currentChar = num.charAt(0);
-            for (int j = 1; j < num.length(); j++) {
-                if (num.charAt(j) == currentChar) {
+           // char currentChar = num.charAt(0);
+            for (int j = 0; j < num.length()-1; j++) {
+                if (num.charAt(j) == num.charAt(j+1)) {
                     count++;
                 } else {
-                    temp.append(count).append(currentChar);
-                    currentChar = num.charAt(j);
+                    temp.append(count).append(num.charAt(j));
+                  //  currentChar = num.charAt(j);
                     count = 1;
                 }
             }
 
-            temp.append(count).append(currentChar);
+         //   temp.append(count).append(currentChar);
             num = temp;
         }
 
