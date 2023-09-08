@@ -16,7 +16,7 @@
  // Postorder - left - right - root
 
 
- 
+
 // class Solution {
 // public List<Integer> postorderTraversal(TreeNode root) {
 //     List<Integer> list = new ArrayList<>();
@@ -38,20 +38,52 @@
 // }
 
 
-import java.util.*;
 
-class Solution {
+
+// One potential optimization is to avoid the reversal of the result list by using a LinkedList instead of an ArrayList for list. This allows you to add elements to the beginning of the list in constant time.
+
+// Postorder - left - right - root
+
+// import java.util.*;
+
+// class Solution {
+//     public List<Integer> postorderTraversal(TreeNode root) {
+//         LinkedList<Integer> list = new LinkedList<>();  // here we can directly add elements in the front
+//         if (root == null) return list;
+//         Stack<TreeNode> stack = new Stack<>();
+//         stack.push(root);
+//         while (!stack.empty()) {
+//             root = stack.pop();
+//             list.addFirst(root.val); // Add to the beginning of the list
+//             if (root.left != null) stack.push(root.left);
+//             if (root.right != null) stack.push(root.right);
+//         }
+//         return list;
+//     }
+// }
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
-        LinkedList<Integer> list = new LinkedList<>();
-        if (root == null) return list;
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.empty()) {
-            root = stack.pop();
-            list.addFirst(root.val); // Add to the beginning of the list
-            if (root.left != null) stack.push(root.left);
-            if (root.right != null) stack.push(root.right);
-        }
+        List<Integer> list = new ArrayList<Integer>();
+        postorderRecursive(root, list);
         return list;
+    }
+
+    private void postorderRecursive(TreeNode node, List<Integer> list) {
+        if (node == null) {
+            return;
+        }
+
+        // Recursively traverse the left subtree
+        postorderRecursive(node.left, list);
+
+        // Recursively traverse the right subtree
+        postorderRecursive(node.right, list);
+
+        // Process the current node
+        list.add(node.val);
     }
 }
