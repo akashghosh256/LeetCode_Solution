@@ -70,7 +70,7 @@
 //     }
 // }
 
-
+// Morris Traversal------------------------------------------------------------------
 import java.util.*;
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
@@ -129,3 +129,4 @@ TreeNode current = root;
 }
 
 
+// TC - O(N)  SC- O(1)
