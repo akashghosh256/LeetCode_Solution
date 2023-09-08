@@ -73,7 +73,8 @@
 // Morris Traversal------------------------------------------------------------------
 import java.util.*;
 public class Solution {
-    public List<Integer> inorderTraversal(TreeNode root) {
+   
+public List<Integer> inorderTraversal(TreeNode root) {
 
 List<Integer> ans =  new ArrayList<>();
 if (root == null) return ans;
@@ -89,26 +90,19 @@ TreeNode current = root;
 				current = current.right;
 			}
 			else {
-				/* Find the inorder
-					predecessor of current
+				/* Find the inorder predecessor of current
 				*/
 			TreeNode	pre = current.left;
-				while (pre.right != null
-					&& pre.right != current)
+				while (pre.right != null && pre.right != current)
 					pre = pre.right;
 
-				/* Make current as right
-				child of its
-				* inorder predecessor */
+				/* Make current as right child of its inorder predecessor */
 				if (pre.right == null) {
 					pre.right = current;
 					current = current.left;
 				}
 
-				/* Revert the changes made
-				in the 'if' part
-				to restore the original
-				tree i.e., fix
+				/* Revert the changes made in the 'if' part to restore the original tree i.e., fix
 				the right child of predecessor*/
 				else
 				{
