@@ -15,13 +15,15 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        // Code is of Level Order Traversal
           List<List<Integer>> result = new ArrayList();
         if(root == null)
             return result;
         
         Queue<TreeNode> que = new LinkedList();
         que.add(root);
-        int lev = 1;
+        int lev = 1; // keeps tracks of the level of the tree we are in 
+        //if its odd dont reverse else if its even reverse the array 
         
         while(!que.isEmpty()){
 
@@ -37,11 +39,11 @@ class Solution {
                     que.add(node.right);
                 size--;
             }
-            if ((lev & 1) == 0){
+            if ((lev & 1) == 0){  // if it is even
                 Collections.reverse(level);
                 result.add(level);
             }
-            else result.add(level);
+            else result.add(level); //for odd add directly
 
             lev++;
         }
