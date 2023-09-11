@@ -15,6 +15,7 @@
  */
 class Solution {
     private int height(TreeNode root, int diameter[]){
+        // code is similar to find height/depth of tree question
         if(root == null) return 0;
 
         int left = height(root.left,diameter);
