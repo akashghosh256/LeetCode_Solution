@@ -6,7 +6,7 @@ class Solution {
 
         int i=0;
         while(i<m){
-        // if a character matches the any character of haystack then we use 
+        // if a first character of needle matches the any character of haystack then we use 
         // substring to pick up the string and match with needle else we move ahead
             if(needle.charAt(0) == haystack.charAt(i) && (i+n <=m)){
                 if(needle.equals(haystack.substring(i,i+n))) return i;
