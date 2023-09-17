@@ -4,21 +4,31 @@
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
  * }
  */
 class Solution {
-    TreeNode prev = null;
     public boolean isValidBST(TreeNode root) {
-        if(root == null) {
-            return true;
-        }
-        
-        if(isValidBST(root.left) && (prev == null || root.val > prev.val)) {
-            prev = root;
-            return isValidBST(root.right);
-        }
-        
-        return false;
+        return isValidBST(root,Long.MIN_VALUE, Long.MAX_VALUE);
     }
+
+    boolean isValidBST(TreeNode node, long minVal , long maxVal){
+        if(node == null ) return true;
+
+        if(node.val >= maxVal || node.val <= minVal) return false;
+
+        return isValidBST(node.left, minVal, node.val) &&
+        isValidBST(node.right,node.val,maxVal);
+
+
+    }
+
+
+
 }
