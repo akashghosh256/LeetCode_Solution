@@ -25,8 +25,8 @@ class Solution {
         int a2[] = new int[n-1];
 
         for(int i=0; i<n;i++){
-            if( i !=0 ) a1[i-1] = nums[i];
-            if(i != n-1) a2[i] = nums[i];
+            if( i !=0 ) a1[i-1] = nums[i];  // not taking first house
+            if(i != n-1) a2[i] = nums[i];  // not taking last house
         }
 
 
