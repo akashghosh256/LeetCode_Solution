@@ -18,9 +18,9 @@ class Solution {
         long lc = (((long) d1 * (long) d2)) / gcd(d1, d2);
         while (l <= r) {
             long mid = (l + r) / 2;
-            int x = (int) (mid - (mid / d1));
-            int y = (int) (mid - (mid / d2));
-            int z = (int) (mid - (mid / lc));
+            int x = (int) (mid - (mid / d1)); //no of elements only divisible by d1
+            int y = (int) (mid - (mid / d2)); //no of elements only divisible by d2
+            int z = (int) (mid - (mid / lc)); // no of elements not divisible by any
             if (x < u1 || y < u2 || z < u1 + u2) {
                 l = mid + 1;
             } else {
