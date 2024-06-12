@@ -26,8 +26,8 @@ class Solution {
             sb.append(str);
         }
         
-        String ns = sb.toString();
-        char nc[] =ns.toCharArray();
+       // String ns = sb.toString();
+        char nc[] =sb.toString().toCharArray();
       for( char c : nc) 
       st.push(c);
 
