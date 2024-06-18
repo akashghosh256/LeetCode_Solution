@@ -1,5 +1,11 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
+
+        // https://www.youtube.com/watch?v=WAOfKpxYHR8
+        // https://www.youtube.com/watch?v=73sneFXuTEg
+
+
+
         int n = numCourses;
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         for(int i=0; i<n; i++){
