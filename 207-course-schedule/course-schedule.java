@@ -17,7 +17,7 @@ class Solution {
        for(int i=0; i<m;i++){
         adj.get(prerequisites[i][1]).add(prerequisites[i][0]);
        }
-
+   // no of nodes 
        int inDegree[] = new int[n];
        for(int i=0;i<n;i++){
         for(int it : adj.get(i)){
@@ -33,7 +33,10 @@ class Solution {
 
        int topo[] = new int[n];
        int ind =0;
+
+       // it will only enter queue if there is no cycle , atleast one indegree[i] is 0
        while(!q.isEmpty()){
+        System.out.println("Inside queue");
         int node = q.peek();
         q.remove();
         topo[ind++] = node;
