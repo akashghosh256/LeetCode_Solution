@@ -34,6 +34,7 @@ class Solution {
         // }
 
         // return ans;
+        // tc  = o(max(piles)) x o (n)
 
         // binary search
 
@@ -62,7 +63,7 @@ class Solution {
      
 
         return ans;
-
+// tc = o(log(max(piles))) x o(n)
 
     }
 }
