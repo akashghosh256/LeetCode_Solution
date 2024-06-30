@@ -27,6 +27,7 @@ class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         
         // create graph
+        // see striver video very important
 
         ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
         for(int i=0; i<n; i++){
