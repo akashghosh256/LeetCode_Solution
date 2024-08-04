@@ -1,5 +1,7 @@
 class Solution {
     public long minimumOperations(int[] nums, int[] target) {
+
+        // https://www.youtube.com/watch?v=1KE3Wpoh_d4&list=PLEL7R4Pm6EmANcHWGHr9uoOFcm75Mkbqn&ab_channel=AryanMittal
         int n = nums.length;
         int diff[] = new int[n];
         Arrays.fill(diff,0);
@@ -13,6 +15,7 @@ class Solution {
                 long extra = diff[i] - incOp;
                 ans += (long) extra;
                 }
+                // it doesnt matter is current div is large or small we have to move according subarrary 
               incOp = diff[i];
               decOp =0;
         }
