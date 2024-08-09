@@ -37,6 +37,8 @@ class Solution {
         int resIndex = 0;
         
         while (idx < n || !pq.isEmpty()) {
+
+            // for cpu idle 
             if (pq.isEmpty() && currTime < sortedTasks[idx][0]) {
                 currTime = sortedTasks[idx][0];
             }
