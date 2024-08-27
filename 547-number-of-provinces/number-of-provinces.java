@@ -11,6 +11,29 @@ class Solution {
 
     }
 
+void bfs(ArrayList<ArrayList<Integer>> adj, boolean vis[], int i){
+
+Queue<Integer> q = new ArrayDeque<>();
+
+q.add(i);
+vis[i] = true;
+
+while(!q.isEmpty()){
+int node = q.poll();
+
+for(int it : adj.get(node)){
+    if(!vis[it]){
+        q.add(it);
+        vis[it] = true;
+    }
+}
+
+
+
+}
+
+
+}
 
 
 
@@ -37,9 +60,16 @@ class Solution {
     //vis[0] = true;
 
     int count =0;
+    // for(int i=0; i<n; i++){
+    //     if(!vis[i]){
+    //         dfs(adj,vis,i);
+    //         count++;
+    //     }
+    // }
+
     for(int i=0; i<n; i++){
         if(!vis[i]){
-            dfs(adj,vis,i);
+            bfs(adj,vis,i);
             count++;
         }
     }
