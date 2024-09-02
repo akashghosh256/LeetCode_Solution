@@ -17,6 +17,7 @@ class Solution {
         for(int[] i : dp)
         Arrays.fill(i,-1);
         int  ways =  helper(0,0,m,n,dp);
+        // edge case
         if(m == 1 && n ==1) return ways;
         return dp[0][0];
 
