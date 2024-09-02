@@ -7,7 +7,8 @@ class Solution {
 
         if (dp[i][j] != -1) return dp[i][j];
 
-        return dp[i][j] = helper(i + 1, j, m, n, dp, obstacleGrid) + helper(i, j + 1, m, n, dp, obstacleGrid);
+        return dp[i][j] = helper(i + 1, j, m, n, dp, obstacleGrid) + 
+                          helper(i, j + 1, m, n, dp, obstacleGrid);
     }
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
