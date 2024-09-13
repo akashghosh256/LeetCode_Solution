@@ -1,13 +1,17 @@
 class Solution {
     public String longestPalindrome(String str) {
         int n = str.length();
+
+       //  https://www.youtube.com/watch?v=UflHuQj6MVA&ab_channel=Techdose
          boolean dp[][] = new boolean[n][n];
 
          int maxLength = 1;
 
-
+    // for single character
          for(int i=0;i<n;i++)
          dp[i][i] = true;
+
+
            // Check for sub-string of length 2.
         int start = 0;
         for (int i = 0; i < n - 1; ++i) {
