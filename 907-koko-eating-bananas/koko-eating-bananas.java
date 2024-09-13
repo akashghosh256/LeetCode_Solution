@@ -1,69 +1,45 @@
 class Solution {
 
-    private int check(int ar[], double k){
-        int th = 0;
-
-        for(int i : ar){
-             th += Math.ceil( i/k);
+    private int check(int piles[], double hr){
+        int hours = 0;
+        for(int i : piles){
+            hours += Math.ceil(i/hr);
         }
+        return hours;
 
-        return th;
 
     }
 
 
+
     public int minEatingSpeed(int[] piles, int h) {
-        
-
-        // brute force - striver
-
-        // Arrays.sort(piles);
-        // int n = piles.length;
-        // // maximum per hour we can eat this much bananas 
-        // int max = piles[n-1];
-        // int ans = 1;
-
-
-        // // test all max eating 1 to max
-        // for(int i =1; i<= max; i++){
-        //     int  hour = check(piles, (double)i);
-        //     if(  hour <= h ){
-        //             ans = i;
-        //             break;
-        //     }
-        // }
-
-        // return ans;
-        // tc  = o(max(piles)) x o (n)
-
-        // binary search
-
-        Arrays.sort(piles);
+        // Accenture
         int n = piles.length;
-        // maximum per hour we can eat this much bananas 
-        int max = piles[n-1];
+        Arrays.sort(piles);
 
-        int low  = 1, high = max;
+        // range of eating 
+        int low = 1;
+        int high = piles[n-1];
+
         int ans = Integer.MAX_VALUE;
-
-
-        // test all max eating 1 to max
-        // apply binary search
         while(low <= high){
-            int mid = (low + high) / 2;
-            int hours = check(piles, (double) mid);
-            if( hours <= h){
-                ans = Math.min(ans,mid);
-                high = mid -1;
+
+            int mid = ( low + high ) / 2;
+            int hours = check(piles, (double)mid);
+            if(hours <=h){
+                ans = Math.min(ans, mid);
+                high = mid - 1;
             }
-            else{
-                low = mid + 1;
-            }
+            else low = mid + 1;
+
+
+
+
+
+
         }
-     
 
         return ans;
-// tc = o(log(max(piles))) x o(n)
 
     }
 }
