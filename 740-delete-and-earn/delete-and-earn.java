@@ -1,26 +1,45 @@
+import java.util.*;
+
 class Solution {
+
+    // Helper function to calculate maximum points
+    int helper(int points[], int i, int n, int dp[]) {
+        if (i >= n) return 0; // Corrected the condition (i >= n)
+ 
+        if(dp[i] != -1) return dp[i];
+
+        // Pick the current element and move to i+2
+        int pick = points[i] + helper(points, i + 2, n, dp);
+
+        // Do not pick the current element and move to i+1
+        int notPick = helper(points, i + 1, n, dp);
+
+        // Return the maximum of the two choices
+        return dp[i] =  Math.max(pick, notPick);
+    }
+
     public int deleteAndEarn(int[] nums) {
-        Map<Integer,Integer> map = new HashMap<>();
-        int max_val = 0;
-        for(int ele:nums){
-            map.put(ele,map.getOrDefault(ele,0)+1);
-            max_val = Math.max(max_val,ele);
+        int n = nums.length;
+        int maxE = 0;
+
+        // Find the maximum element in nums
+        for (int i : nums) {
+            maxE = Math.max(maxE, i);
         }
 
-        int[][] dp = new int[max_val+1][2];
-        for(int i=1;i<=max_val;i++){
-           if(!map.containsKey(i)){
-               dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]);
-               dp[i][1] = Math.max(dp[i-1][0],dp[i-1][1]);
-               continue;
-           }
-           
-            dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]);
-            dp[i][1] = dp[i-1][0] + i*map.get(i);
+        // Create points array to store the sum of values
+        int points[] = new int[maxE + 1];
+        Arrays.fill(points, 0);
 
-            
+        // Populate the points array
+        for (int i : nums) {
+            points[i] += i;
         }
-        
-        return Math.max(dp[max_val][0],dp[max_val][1]);
+
+        int dp[] = new int[maxE + 1];
+        Arrays.fill(dp,-1);
+
+        // Call the helper function starting from index 1
+        return helper(points, 1, maxE + 1, dp);
     }
 }
