@@ -33,7 +33,7 @@ class Solution {
        } 
 
   for(int i= n-1 ; i > ind ; i--){
-            if(nums[ind] < nums[i])
+            if(nums[i] > nums[ind])
             {
               int temp = nums[i];
               nums[i] = nums[ind];
